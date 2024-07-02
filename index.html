@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-increment Counter</title>
+
+    <style>
+        div#target {
+            height: 150px;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 150px;
+            text-align: center;
+        }
+
+        div.btn-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        div.btn-container button#stop {
+            background-color: red;
+            height: 30px;
+            width: 60px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        div.btn-container button#start {
+            background-color: green;
+            height: 30px;
+            width: 60px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        div.btn-container button#clear {
+            background-color: rgb(0, 242, 255);
+            height: 30px;
+            width: 60px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="target"></div>
+
+    <div class="btn-container">
+        <button id="start" onclick="startCounter()">Start</button>
+        <button id="stop" onclick="stopCounter()">Stop</button>
+        <button id="clear" onclick="clearCounter()">Clear</button>
+    </div>
+
+    <script>
+        var target = document.getElementById('target');
+        var counter = 1;
+        var intervalStoper = null;
+
+        function timerCounter() {
+            target.innerHTML = counter++;
+        }
+
+        function startCounter() {
+            intervalStoper = setInterval(timerCounter, 1000);
+        }
+
+        function stopCounter() {
+            clearInterval(intervalStoper);
+        }
+
+        function clearCounter() {
+            target.innerHTML = null;
+            counter = 1;
+        }
+    </script>
+</body>
+
+</html>
